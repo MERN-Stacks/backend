@@ -7,9 +7,13 @@ import { AuthModule } from './apis/auth/auth.module'
 import { PostgresModule } from './databases/postgres/postgres.module'
 import { LoggerModule } from './loggers/logger.module'
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler'
+import { ConfigModule } from '@nestjs/config'
 
 @Module({
   imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
     ThrottlerModule.forRoot([
       {
         name: 'short',
